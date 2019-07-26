@@ -1,6 +1,6 @@
 # Localstack and pytest 1️⃣
 
-## Prerequisites
+## Prerequisites
 
 * Python (I'm using 3.6.6)
 * Pycharm/some IDE
