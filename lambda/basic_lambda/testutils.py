@@ -6,16 +6,6 @@ from zipfile import ZipFile
 LAMBDA_ZIP = './lambda.zip'
 
 
-def get_iam_client():
-    return boto3.client(
-        'iam',
-        aws_access_key_id='',
-        aws_secret_access_key='',
-        region_name='eu-west-2',
-        endpoint_url='http://localhost:4593'
-    )
-
-
 def get_lambda_client():
     return boto3.client(
         'lambda',
@@ -23,6 +13,16 @@ def get_lambda_client():
         aws_secret_access_key='',
         region_name='eu-west-2',
         endpoint_url='http://localhost:4574'
+    )
+
+
+def get_s3_client():
+    return boto3.client(
+        's3',
+        aws_access_key_id='',
+        aws_secret_access_key='',
+        region_name='eu-west-2',
+        endpoint_url='http://localhost:4572'
     )
 
 
@@ -64,4 +64,3 @@ def invoke_function_and_get_message(function_name):
         .read()
         .decode('utf-8')
     )
-
