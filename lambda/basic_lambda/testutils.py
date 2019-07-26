@@ -16,16 +16,6 @@ def get_lambda_client():
     )
 
 
-def get_s3_client():
-    return boto3.client(
-        's3',
-        aws_access_key_id='',
-        aws_secret_access_key='',
-        region_name='eu-west-2',
-        endpoint_url='http://localhost:4572'
-    )
-
-
 def create_lambda_zip(function_name):
     with ZipFile(LAMBDA_ZIP, 'w') as z:
         z.write(function_name + '.py')
