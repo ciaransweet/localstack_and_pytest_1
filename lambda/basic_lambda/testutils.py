@@ -22,11 +22,11 @@ def create_lambda_zip(function_name):
 
 
 def create_lambda(function_name):
-    lambda_c = get_lambda_client()
+    lambda_client = get_lambda_client()
     create_lambda_zip(function_name)
     with open(LAMBDA_ZIP, 'rb') as f:
         zipped_code = f.read()
-    lambda_c.create_function(
+    lambda_client.create_function(
         FunctionName=function_name,
         Runtime='python3.6',
         Role='role',
@@ -36,16 +36,16 @@ def create_lambda(function_name):
 
 
 def delete_lambda(function_name):
-    lambda_c = get_lambda_client()
-    lambda_c.delete_function(
+    lambda_client = get_lambda_client()
+    lambda_client.delete_function(
         FunctionName=function_name
     )
     os.remove(LAMBDA_ZIP)
 
 
 def invoke_function_and_get_message(function_name):
-    lambda_c = get_lambda_client()
-    response = lambda_c.invoke(
+    lambda_client = get_lambda_client()
+    response = lambda_client.invoke(
         FunctionName=function_name,
         InvocationType='RequestResponse'
     )

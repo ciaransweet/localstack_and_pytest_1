@@ -16,13 +16,13 @@ def get_s3_client():
                             endpoint_url='http://localhost:4572')
 
 
-S3_C = get_s3_client()
+S3_CLIENT = get_s3_client()
 
 
 def handler(event, context):
     LOGGER.info('I\'m putting something in S3')
     test_object_key = 'a-object-{0}'.format(datetime.now().isoformat())
-    S3_C.put_object(
+    S3_CLIENT.put_object(
         Bucket='a-bucket',
         Key=test_object_key,
         Body='some body'

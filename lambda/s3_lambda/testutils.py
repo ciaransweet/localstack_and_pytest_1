@@ -51,16 +51,16 @@ def create_lambda(function_name):
 
 
 def delete_lambda(function_name):
-    lambda_c = get_lambda_client()
-    lambda_c.delete_function(
+    lambda_client = get_lambda_client()
+    lambda_client.delete_function(
         FunctionName=function_name
     )
     os.remove(LAMBDA_ZIP)
 
 
 def invoke_function_and_get_message(function_name):
-    lambda_c = get_lambda_client()
-    response = lambda_c.invoke(
+    lambda_client = get_lambda_client()
+    response = lambda_client.invoke(
         FunctionName=function_name,
         InvocationType='RequestResponse'
     )
@@ -72,23 +72,23 @@ def invoke_function_and_get_message(function_name):
 
 
 def create_bucket(bucket_name):
-    s3_c = get_s3_client()
-    s3_c.create_bucket(
+    s3_client = get_s3_client()
+    s3_client.create_bucket(
         Bucket=bucket_name
     )
 
 
 def list_s3_bucket_objects(bucket_name):
-    s3_c = get_s3_client()
-    return s3_c.list_objects_v2(
+    s3_client = get_s3_client()
+    return s3_client.list_objects_v2(
         Bucket=bucket_name
     )['Contents']
 
 
 def delete_bucket(bucket_name):
-    s3_c = get_s3_client()
-    s3_c_objects = list_s3_bucket_objects(bucket_name)
-    [s3_c.delete_object(Bucket=bucket_name, Key=obj['Key']) for obj in s3_c_objects]
-    s3_c.delete_bucket(
+    s3_client = get_s3_client()
+    bucket_objects = list_s3_bucket_objects(bucket_name)
+    [s3_client.delete_object(Bucket=bucket_name, Key=obj['Key']) for obj in bucket_objects]
+    s3_client.delete_bucket(
         Bucket=bucket_name
     )
