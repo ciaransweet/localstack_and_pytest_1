@@ -1,4 +1,4 @@
-# LocalStack and pytest 1️⃣
+# LocalStack and pytest
 
 ## Prerequisites
 
