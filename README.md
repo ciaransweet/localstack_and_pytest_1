@@ -3,6 +3,7 @@
 ## Prerequisites
 
 * Python 3+
+* Docker Compose
 
 Install the required pip packages for the project with:
 
