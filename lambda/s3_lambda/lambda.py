@@ -13,7 +13,7 @@ def get_s3_client():
         return boto3.client('s3')
     else:
         return boto3.client('s3', aws_access_key_id='', aws_secret_access_key='', region_name='eu-west-2',
-                            endpoint_url='http://localhost:4572')
+                            endpoint_url='http://172.17.0.1:4572')
 
 
 S3_CLIENT = get_s3_client()
