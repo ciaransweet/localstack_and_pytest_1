@@ -77,3 +77,5 @@ REPORT RequestId: 8e231e97-8878-4bd1-b84f-eec5f1aedfc7 Duration: 0 ms Billed Dur
 ```
 
 Congrats! You've run your first test against LocalStack!
+
+To run a more complex test, repeat the above in `s3_lambda/`
