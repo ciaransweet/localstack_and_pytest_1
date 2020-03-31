@@ -15,7 +15,7 @@ def get_lambda_client():
         aws_access_key_id='',
         aws_secret_access_key='',
         region_name='eu-west-2',
-        endpoint_url='http://localhost:4574',
+        endpoint_url='http://localstack:4574',
         config=CONFIG
     )
 

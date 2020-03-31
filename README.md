@@ -2,34 +2,27 @@
 
 ## Prerequisites
 
-* Python 3+
 * Docker Compose
 
-Install the required pip packages for the project with:
+## Run LocalStack with the tests
 
-    $ pip3 install -r requirements.txt
-
-## Run Localstack
-
-The easy way is to run LocalStack with docker-compose
-
-Run the LocalStack container in the background with:
-    
-    $ docker-compose up -d
-
-Follow the logs with: 
-
-    $ docker logs -f localstack
-    
-Till you see:
+On a Mac:
 
 ```
-...
-Waiting for all LocalStack services to be ready
-Ready.
+TMPDIR=/private$TMPDIR docker-compose up -d --build
 ```
 
-## Run tests
+On Linux:
+
+```
+docker-compose up -d --build
+```
+
+## To see the progress of the tests
+
+    $ docker-compose logs pytest
+
+## Tests that are run
 
 A simple test that creates, invokes, and then tears down a simple Lambda is provided.
 
@@ -37,7 +30,7 @@ To run the test, use the following commands within the root of the project:
 
 ```
 $ cd lambda/basic_lambda
-$ pytest -s . 
+$ pytest -s .
 ```
 
 Wait a while, you should see similar to the following:
@@ -48,7 +41,7 @@ platform darwin -- Python 3.6.6, pytest-5.0.1, py-1.8.0, pluggy-0.12.0
 rootdir: /Users/ciaran/dev/localstack_and_pytest_1/lambda
 collected 1 item                                                                                                                                                                               
 
-test_lambda.py 
+test_lambda.py
 Setting up the class
 .
 Tearing down the class
